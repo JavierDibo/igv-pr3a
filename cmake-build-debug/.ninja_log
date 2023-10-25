@@ -1,0 +1,9 @@
+# ninja log v5
+1	1520	7199455763986687	CMakeFiles/pr3a.dir/igvCamara.cpp.obj	a38d73a1b9d74b28
+14	1542	7199455764206752	CMakeFiles/pr3a.dir/igvEscena3D.cpp.obj	190ab803ab0b839
+20	1637	7199455765166713	CMakeFiles/pr3a.dir/igvInterfaz.cpp.obj	619f4a808545c958
+8	1648	7199455765266713	CMakeFiles/pr3a.dir/igvCilindro.cpp.obj	ad2b180a195dbbd5
+1543	2645	7199455775246801	CMakeFiles/pr3a.dir/igvPunto3D.cpp.obj	f618efad15ba6f91
+1524	2797	7199455776756736	CMakeFiles/pr3a.dir/pr3a.cpp.obj	a5d8ed7f0156094c
+1637	2932	7199455778116672	CMakeFiles/pr3a.dir/igvMallaTriangulos.cpp.obj	fe57bf7a1fcd974
+2932	3207	7199455780806887	pr3a.exe	f6a3ba8415716f31

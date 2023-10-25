@@ -16,33 +16,51 @@
 /**
  * Los objetos de esta clase representan escenas 3D para su visualización
  */
-class igvEscena3D
-{  private:
-      // Atributos
-      bool ejes = true;   ///< Indica si hay que dibujar los _ejes coordenados o no
+class igvEscena3D {
+private:
+    // Atributos
+    bool ejes = true;   ///< Indica si hay que dibujar los _ejes coordenados o no
 
-      // TODO: Apartado A: Añadir aquí los atributos con los ángulos de rotación en X, Y y Z.
+    float anguloX, anguloY, anguloZ; ///< Atributos con los ángulos de rotación en X, Y y Z.
 
-      igvMallaTriangulos *malla = nullptr; ///< Malla de triángulos asociada a la escena
+    igvMallaTriangulos *malla = nullptr; ///< Malla de triángulos asociada a la escena
 
-   public:
-      // Constructores por defecto y destructor
-      igvEscena3D ();
-      ~igvEscena3D ();
+public:
+    // Constructores por defecto y destructor
+    igvEscena3D();
 
-      // Métodos
-      // método con las llamadas OpenGL para visualizar la escena
-      void visualizar ();
+    ~igvEscena3D();
 
-      bool get_ejes ();
+    // Métodos
+    // método con las llamadas OpenGL para visualizar la escena
+    void visualizar();
 
-      void set_ejes ( bool _ejes );
+    bool get_ejes();
 
-      // TODO: Apartado A: métodos para incrementar los ángulos
-      // TODO: Apartado A: métodos para obtener los valores de los ángulos
+    void set_ejes(bool _ejes);
 
-   private:
-      void pintar_ejes ();
+    bool isEjes() const;
+
+    void setEjes(bool ejes);
+
+    float getAnguloX() const;
+
+    void setAnguloX(float anguloX);
+
+    float getAnguloY() const;
+
+    void setAnguloY(float anguloY);
+
+    float getAnguloZ() const;
+
+    void setAnguloZ(float anguloZ);
+
+    igvMallaTriangulos *getMalla() const;
+
+    void setMalla(igvMallaTriangulos *malla);
+
+private:
+    void pintar_ejes();
 };
 
 #endif   // __IGVESCENA3D
