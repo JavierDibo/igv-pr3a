@@ -107,6 +107,14 @@ void igvInterfaz::keyboardFunc(unsigned char key, int x, int y) {
         case 'e': // activa/desactiva la visualizacion de los ejes
             _instancia->escena.set_ejes(!_instancia->escena.get_ejes());
             break;
+        case 'n':
+        case 'N':
+            _instancia->escena.setNormal(!_instancia->escena.getNormal());
+            break;
+        case 'g':
+        case 'G':
+            _instancia->escena.setGouraud(!_instancia->escena.getGouraud());
+            break;
         case 27: // tecla de escape para SALIR
             exit(1);
             break;

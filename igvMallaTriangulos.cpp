@@ -17,57 +17,63 @@
  * @post La nueva malla almacenará copias de la información que se le pasa como
  *       parámetro
  */
-igvMallaTriangulos::igvMallaTriangulos ( long int _num_vertices, float *_vertices
-                                         , long int _num_triangulos
-                                         , unsigned int *_triangulos ):
-                                       num_vertices ( _num_vertices )
-                                       , num_triangulos ( _num_triangulos )
-{  vertices = new float[num_vertices * 3];
-   for ( long int i = 0 ; i < ( num_vertices * 3 ) ; ++i )
-   {  vertices[i] = _vertices[i];
-   }
+igvMallaTriangulos::igvMallaTriangulos(long int _num_vertices, float *_vertices, long int _num_triangulos,
+                                       unsigned int *_triangulos) :
+        num_vertices(_num_vertices), num_triangulos(_num_triangulos) {
+    vertices = new float[num_vertices * 3];
+    for (long int i = 0; i < (num_vertices * 3); ++i) {
+        vertices[i] = _vertices[i];
+    }
 
-   triangulos = new unsigned int[num_triangulos * 3];
-   for ( long int i = 0 ; i < ( num_triangulos * 3 ) ; ++i )
-   {  triangulos[i] = _triangulos[i];
-   }
+    triangulos = new unsigned int[num_triangulos * 3];
+    for (long int i = 0; i < (num_triangulos * 3); ++i) {
+        triangulos[i] = _triangulos[i];
+    }
 }
 
 /**
  * Destructor
  */
-igvMallaTriangulos::~igvMallaTriangulos ()
-{  if ( vertices )
-   {  delete []vertices;
-      vertices = nullptr;
-   }
+igvMallaTriangulos::~igvMallaTriangulos() {
+    if (vertices) {
+        delete[]vertices;
+        vertices = nullptr;
+    }
 
-   if ( normales )
-   {  delete []normales;
-      normales = nullptr;
-   }
+    if (normales) {
+        delete[]normales;
+        normales = nullptr;
+    }
 
-   if ( triangulos )
-   {  delete []triangulos;
-      triangulos = nullptr;
-   }
+    if (triangulos) {
+        delete[]triangulos;
+        triangulos = nullptr;
+    }
 }
 
 /**
  * Método con las llamadas OpenGL para visualizar la malla de triángulos
  */
-void igvMallaTriangulos::visualizar() {
-    glShadeModel(GL_FLAT);
+void igvMallaTriangulos::visualizar(bool usar_normal, bool usar_gouraud) {
+    if (usar_normal) {
+        glEnableClientState(GL_NORMAL_ARRAY); // Habilitar array de normales
+        glNormalPointer(GL_FLOAT, 0, normales); // Puntero a las normales
+    }
+
+    if (usar_gouraud) {
+        glShadeModel(GL_SMOOTH);
+    } else {
+        glShadeModel(GL_FLAT);
+    }
 
     glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY); // Habilitar array de normales
-
     glVertexPointer(3, GL_FLOAT, 0, vertices);
-    glNormalPointer(GL_FLOAT, 0, normales); // Puntero a las normales
 
     glDrawElements(GL_TRIANGLES, num_triangulos * 3, GL_UNSIGNED_INT, triangulos);
 
     glDisableClientState(GL_VERTEX_ARRAY);
-    glDisableClientState(GL_NORMAL_ARRAY); // Deshabilitar array de normales
+    if (usar_normal) {
+        glDisableClientState(GL_NORMAL_ARRAY); // Deshabilitar array de normales
+    }
 }
 

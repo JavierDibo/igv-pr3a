@@ -90,7 +90,7 @@ void igvEscena3D::visualizar(void) {
 
     // Visualizar la malla de triángulos que representa el cilindro
     if (malla) {
-        malla->visualizar();
+        malla->visualizar(getNormal(), getGouraud());
     }
 
     glPopMatrix(); // restaura la matriz de modelado
@@ -113,6 +113,14 @@ bool igvEscena3D::get_ejes() {
  */
 void igvEscena3D::set_ejes(bool _ejes) {
     ejes = _ejes;
+}
+
+bool igvEscena3D::getNormal() const {
+    return normal;
+}
+
+void igvEscena3D::setNormal(bool normal) {
+    igvEscena3D::normal = normal;
 }
 
 bool igvEscena3D::isEjes() const {
@@ -153,5 +161,13 @@ igvMallaTriangulos *igvEscena3D::getMalla() const {
 
 void igvEscena3D::setMalla(igvMallaTriangulos *malla) {
     igvEscena3D::malla = malla;
+}
+
+bool igvEscena3D::getGouraud() const {
+    return gouraud;
+}
+
+void igvEscena3D::setGouraud(bool gouraud) {
+    igvEscena3D::gouraud = gouraud;
 }
 

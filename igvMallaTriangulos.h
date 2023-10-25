@@ -37,7 +37,7 @@ public:
     ~igvMallaTriangulos();
 
     // Método con las llamadas OpenGL para visualizar la malla de triángulos
-    void visualizar();
+    void visualizar(bool usar_normal, bool usar_gouraud);
 
 };
 

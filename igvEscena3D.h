@@ -23,6 +23,13 @@ private:
 
     float anguloX, anguloY, anguloZ; ///< Atributos con los ángulos de rotación en X, Y y Z.
 
+    bool normal = false; ///< Indica si hay que usar las normales o no
+
+    bool gouraud = false;
+
+private:
+    ///< Indica si hay que usar la visualizacion gouraud o no
+
     igvMallaTriangulos *malla = nullptr; ///< Malla de triángulos asociada a la escena
 
 public:
@@ -58,6 +65,14 @@ public:
     igvMallaTriangulos *getMalla() const;
 
     void setMalla(igvMallaTriangulos *malla);
+
+    bool getNormal() const;
+
+    void setNormal(bool normal);
+
+    bool getGouraud() const;
+
+    void setGouraud(bool gouraud);
 
 private:
     void pintar_ejes();
