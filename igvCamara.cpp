@@ -15,10 +15,8 @@
  * @post Los atributos de la nueva cámara serán iguales a los parámetros que se
  *       le pasan
  */
-igvCamara::igvCamara ( tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r
-   , igvPunto3D _V ): P0 ( _P0 ), r ( _r ), V ( _V )
-                      , tipo ( _tipo )
-{ }
+igvCamara::igvCamara(tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r, igvPunto3D _V) : P0(_P0), r(_r), V(_V),
+                                                                                       tipo(_tipo) {}
 
 // Métodos públicos
 /**
@@ -29,10 +27,10 @@ igvCamara::igvCamara ( tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r
  * @pre Se asume que todos los parámetros tienen valores válidos
  * @post Los atributos de la cámara cambian a los valores pasados como parámetro
  */
-void igvCamara::set ( igvPunto3D _P0, igvPunto3D _r, igvPunto3D _V )
-{  P0 = _P0;
-   r  = _r;
-   V  = _V;
+void igvCamara::set(igvPunto3D _P0, igvPunto3D _r, igvPunto3D _V) {
+    P0 = _P0;
+    r = _r;
+    V = _V;
 }
 
 /**
@@ -50,21 +48,20 @@ void igvCamara::set ( igvPunto3D _P0, igvPunto3D _r, igvPunto3D _V )
  * @pre Se asume que todos los parámetros tienen valores válidos
  * @post Los atributos de la cámara cambian a los valores pasados como parámetro
  */
-void igvCamara::set ( tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r
-   , igvPunto3D _V, double _xwmin, double _xwmax, double _ywmin
-   , double _ywmax, double _znear, double _zfar )
-{  tipo = _tipo;
+void igvCamara::set(tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r, igvPunto3D _V, double _xwmin, double _xwmax,
+                    double _ywmin, double _ywmax, double _znear, double _zfar) {
+    tipo = _tipo;
 
-   P0 = _P0;
-   r  = _r;
-   V  = _V;
+    P0 = _P0;
+    r = _r;
+    V = _V;
 
-   xwmin = _xwmin;
-   xwmax = _xwmax;
-   ywmin = _ywmin;
-   ywmax = _ywmax;
-   znear = _znear;
-   zfar  = _zfar;
+    xwmin = _xwmin;
+    xwmax = _xwmax;
+    ywmin = _ywmin;
+    ywmax = _ywmax;
+    znear = _znear;
+    zfar = _zfar;
 }
 
 /**
@@ -81,42 +78,41 @@ void igvCamara::set ( tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r
  * @post Los atributos de la cámara cambian a los valores que se pasan como
  *       parámetros
  */
-void igvCamara::set ( tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r
-   , igvPunto3D _V, double _angulo, double _raspecto
-   , double _znear, double _zfar )
-{  tipo = _tipo;
+void igvCamara::set(tipoCamara _tipo, igvPunto3D _P0, igvPunto3D _r, igvPunto3D _V, double _angulo, double _raspecto,
+                    double _znear, double _zfar) {
+    tipo = _tipo;
 
-   P0 = _P0;
-   r  = _r;
-   V  = _V;
+    P0 = _P0;
+    r = _r;
+    V = _V;
 
-   angulo   = _angulo;
-   raspecto = _raspecto;
-   znear    = _znear;
-   zfar     = _zfar;
+    angulo = _angulo;
+    raspecto = _raspecto;
+    znear = _znear;
+    zfar = _zfar;
 }
 
 /**
  * Aplica a los objetos de la escena la transformación de visión y la
  * transformación de proyección asociadas a los parámetros de la cámara
  */
-void igvCamara::aplicar ( void )
-{  glMatrixMode ( GL_PROJECTION );
-   glLoadIdentity ();
+void igvCamara::aplicar(void) {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
 
-   if ( tipo == IGV_PARALELA )
-   {  glOrtho ( xwmin, xwmax, ywmin, ywmax, znear, zfar );
-   }
-   if ( tipo == IGV_FRUSTUM )
-   {  glFrustum ( xwmin, xwmax, ywmin, ywmax, znear, zfar );
-   }
-   if ( tipo == IGV_PERSPECTIVA )
-   {  gluPerspective ( angulo, raspecto, znear, zfar );
-   }
+    if (tipo == IGV_PARALELA) {
+        glOrtho(xwmin, xwmax, ywmin, ywmax, znear, zfar);
+    }
+    if (tipo == IGV_FRUSTUM) {
+        glFrustum(xwmin, xwmax, ywmin, ywmax, znear, zfar);
+    }
+    if (tipo == IGV_PERSPECTIVA) {
+        gluPerspective(angulo, raspecto, znear, zfar);
+    }
 
-   glMatrixMode ( GL_MODELVIEW );
-   glLoadIdentity ();
-   gluLookAt ( P0[X], P0[Y], P0[Z], r[X], r[Y], r[Z], V[X], V[Y], V[Z] );
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    gluLookAt(P0[X], P0[Y], P0[Z], r[X], r[Y], r[Z], V[X], V[Y], V[Z]);
 }
 
 /**
@@ -125,5 +121,4 @@ void igvCamara::aplicar ( void )
  *        positivo, se aumenta el zoom. Si es negativo, se reduce.
  * @pre Se asume que el parámetro tiene un valor válido
  */
-void igvCamara::zoom ( double factor )
-{ }
+void igvCamara::zoom(double factor) {}

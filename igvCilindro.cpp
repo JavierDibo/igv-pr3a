@@ -41,7 +41,7 @@ igvCilindro::igvCilindro(float r, float a, int divU, int divV) : igvMallaTriangu
             vertices[index + 2] = z;
 
             // Calcular normales
-            float magnitude = sqrt(x*x + z*z); // Componente y es 0 para la superficie lateral
+            float magnitude = sqrt(x * x + z * z); // Componente y es 0 para la superficie lateral
             normales[index] = x / magnitude;
             normales[index + 1] = 0; // La componente y de la normal es 0 para la superficie lateral
             normales[index + 2] = z / magnitude;

@@ -19,44 +19,46 @@
 /**
  * Etiquetas para las coordenadas del punto/vector
  */
-enum Coordenadas
-{  X   ///< Coordenada X
-   , Y   ///< Coordenada Y
-   , Z   ///< Coordenada Z
+enum Coordenadas {
+    X   ///< Coordenada X
+    , Y   ///< Coordenada Y
+    , Z   ///< Coordenada Z
 };
 #endif   // __ENUM_XYZ
 
 /**
  * Los objetos de esta clase representan puntos y vectores en 3D
  */
-class igvPunto3D
-{  private:
-      double c[3] = {0,0,0}; ///< Componentes x, y, z del punto o vector
+class igvPunto3D {
+private:
+    double c[3] = {0, 0, 0}; ///< Componentes x, y, z del punto o vector
 
-   public:
-      // Constructores
-      /// Constructor por defecto
-      igvPunto3D () = default;
-      igvPunto3D ( const double &x, const double &y, const double &z );
-      // Constructor de copia
-      igvPunto3D ( const igvPunto3D &p );
+public:
+    // Constructores
+    /// Constructor por defecto
+    igvPunto3D() = default;
 
-      // Operador de asignación
-      igvPunto3D &operator= ( const igvPunto3D &p );
+    igvPunto3D(const double &x, const double &y, const double &z);
 
-      /// Destructor
-      ~igvPunto3D () = default;
+    // Constructor de copia
+    igvPunto3D(const igvPunto3D &p);
 
-      // Operadores
-      double &operator[] ( const unsigned char idx );
+    // Operador de asignación
+    igvPunto3D &operator=(const igvPunto3D &p);
 
-      double operator[] ( const unsigned char idx ) const;
+    /// Destructor
+    ~igvPunto3D() = default;
 
-      bool operator== ( const igvPunto3D &p );
+    // Operadores
+    double &operator[](const unsigned char idx);
 
-      bool operator!= ( const igvPunto3D &p );
+    double operator[](const unsigned char idx) const;
 
-      void set ( const double &x, const double &y, const double &z );
+    bool operator==(const igvPunto3D &p);
+
+    bool operator!=(const igvPunto3D &p);
+
+    void set(const double &x, const double &y, const double &z);
 };
 
 /**
@@ -65,8 +67,8 @@ class igvPunto3D
  * @return La coordenada correspondiente
  * @pre Se asume que el valor del parámetro es correcto
  */
-inline double &igvPunto3D::operator[] ( const unsigned char idx )
-{  return c[idx];
+inline double &igvPunto3D::operator[](const unsigned char idx) {
+    return c[idx];
 }
 
 /**
@@ -75,8 +77,9 @@ inline double &igvPunto3D::operator[] ( const unsigned char idx )
  * @return La coordenada correspondiente
  * @pre Se asume que el valor del parámetro es correcto
  */
-inline double igvPunto3D::operator[] ( const unsigned char idx ) const
-{  return c[idx];
+inline double igvPunto3D::operator[](const unsigned char idx) const {
+    return c[idx];
 }
+
 #endif   // __IGVPUNTO3D
 

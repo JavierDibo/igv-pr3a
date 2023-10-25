@@ -12,7 +12,7 @@
 /**
  * Constructor por defecto
  */
-igvEscena3D::igvEscena3D() {  // TODO: Apartado B: Inserta el código para crear un cilindro
+igvEscena3D::igvEscena3D() {
     malla = new igvCilindro(1.0f, 1.0f, 40, 2);
     anguloX = 0.0f;
     anguloY = 0.0f;
