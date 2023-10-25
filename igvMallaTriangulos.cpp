@@ -59,13 +59,10 @@ igvMallaTriangulos::~igvMallaTriangulos ()
 void igvMallaTriangulos::visualizar() {
     glShadeModel(GL_FLAT);
 
-    // Dibujo de la malla de triángulos
-    glBegin(GL_TRIANGLES);
-    for (long int i = 0; i < num_triangulos; ++i) {
-        for (int j = 0; j < 3; ++j) {
-            int vertexIndex = triangulos[i * 3 + j];
-            glVertex3f(vertices[vertexIndex * 3], vertices[vertexIndex * 3 + 1], vertices[vertexIndex * 3 + 2]);
-        }
-    }
-    glEnd();
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glVertexPointer(3, GL_FLOAT, 0, vertices);
+
+    glDrawElements(GL_TRIANGLES, num_triangulos * 3, GL_UNSIGNED_INT, triangulos);
+
+    glDisableClientState(GL_VERTEX_ARRAY);
 }

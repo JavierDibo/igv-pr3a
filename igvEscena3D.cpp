@@ -85,7 +85,7 @@ void igvEscena3D::visualizar(void) {
     }
 
     // la luz se coloca aquí si se mueve junto con la escena
-    //glLightfv(GL_LIGHT0,GL_POSITION,luz0);
+    glLightfv(GL_LIGHT0,GL_POSITION,luz0);
     glMaterialfv(GL_FRONT, GL_EMISSION, color_malla);
 
     // Visualizar la malla de triángulos que representa el cilindro
