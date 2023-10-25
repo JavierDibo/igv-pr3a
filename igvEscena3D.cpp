@@ -4,6 +4,7 @@
 
 #include "igvEscena3D.h"
 #include "igvMallaTriangulos.h"
+#include "igvCilindro.h"
 
 
 // Métodos constructores
@@ -12,7 +13,7 @@
  * Constructor por defecto
  */
 igvEscena3D::igvEscena3D() {  // TODO: Apartado B: Inserta el código para crear un cilindro
-    malla = new igvMallaTriangulos();
+    malla = new igvCilindro(1.0f, 1.0f, 40, 2);
     anguloX = 0.0f;
     anguloY = 0.0f;
     anguloZ = 0.0f;
@@ -87,11 +88,10 @@ void igvEscena3D::visualizar(void) {
     //glLightfv(GL_LIGHT0,GL_POSITION,luz0);
     glMaterialfv(GL_FRONT, GL_EMISSION, color_malla);
 
-    // TODO: Apartado B: la siguiente llamada hay que sustituirla por la llamada al método visualizar de la malla
-    GLUquadric *cyl = gluNewQuadric();
-    gluCylinder(cyl, 1, 1, 1, 20, 5);
-    gluDeleteQuadric(cyl);
-    cyl = nullptr;
+    // Visualizar la malla de triángulos que representa el cilindro
+    if (malla) {
+        malla->visualizar();
+    }
 
     glPopMatrix(); // restaura la matriz de modelado
 }

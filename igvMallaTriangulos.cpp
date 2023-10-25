@@ -56,9 +56,16 @@ igvMallaTriangulos::~igvMallaTriangulos ()
 /**
  * Método con las llamadas OpenGL para visualizar la malla de triángulos
  */
-void igvMallaTriangulos::visualizar ()
-{  glShadeModel ( GL_FLAT );
+void igvMallaTriangulos::visualizar() {
+    glShadeModel(GL_FLAT);
 
-   // TODO: Apartado B
-
+    // Dibujo de la malla de triángulos
+    glBegin(GL_TRIANGLES);
+    for (long int i = 0; i < num_triangulos; ++i) {
+        for (int j = 0; j < 3; ++j) {
+            int vertexIndex = triangulos[i * 3 + j];
+            glVertex3f(vertices[vertexIndex * 3], vertices[vertexIndex * 3 + 1], vertices[vertexIndex * 3 + 2]);
+        }
+    }
+    glEnd();
 }
