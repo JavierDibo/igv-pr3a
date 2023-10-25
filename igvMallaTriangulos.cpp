@@ -60,9 +60,14 @@ void igvMallaTriangulos::visualizar() {
     glShadeModel(GL_FLAT);
 
     glEnableClientState(GL_VERTEX_ARRAY);
+    glEnableClientState(GL_NORMAL_ARRAY); // Habilitar array de normales
+
     glVertexPointer(3, GL_FLOAT, 0, vertices);
+    glNormalPointer(GL_FLOAT, 0, normales); // Puntero a las normales
 
     glDrawElements(GL_TRIANGLES, num_triangulos * 3, GL_UNSIGNED_INT, triangulos);
 
     glDisableClientState(GL_VERTEX_ARRAY);
+    glDisableClientState(GL_NORMAL_ARRAY); // Deshabilitar array de normales
 }
+

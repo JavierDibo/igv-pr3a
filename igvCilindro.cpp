@@ -4,8 +4,7 @@
 /**
  * Constructor por defecto
  */
-igvCilindro::igvCilindro() :igvMallaTriangulos()
-{
+igvCilindro::igvCilindro() : igvMallaTriangulos() {
 }
 
 /**
@@ -26,8 +25,9 @@ igvCilindro::igvCilindro(float r, float a, int divU, int divV) : igvMallaTriangu
     // Reservar espacio para los arrays de vértices y triángulos
     vertices = new float[num_vertices * 3];
     triangulos = new unsigned int[num_triangulos * 3];
+    normales = new float[num_vertices * 3];
 
-    // Calcular vértices
+    // Calcular vértices y normales
     for (int j = 0; j <= divV; j++) {
         for (int i = 0; i <= divU; i++) {
             float theta = 2.0f * M_PI * i / divU;
@@ -39,6 +39,12 @@ igvCilindro::igvCilindro(float r, float a, int divU, int divV) : igvMallaTriangu
             vertices[index] = x;
             vertices[index + 1] = y;
             vertices[index + 2] = z;
+
+            // Calcular normales
+            float magnitude = sqrt(x*x + z*z); // Componente y es 0 para la superficie lateral
+            normales[index] = x / magnitude;
+            normales[index + 1] = 0; // La componente y de la normal es 0 para la superficie lateral
+            normales[index + 2] = z / magnitude;
         }
     }
 
